@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqib Abid · creative frontend portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #f9faff 0%, #eef2fd 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .blob {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 50%, rgba(120, 80, 255, 0.08), transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .blob-1 {
+            top: -100px;
+            left: -100px;
+        }
+        
+        .blob-2 {
+            bottom: -80px;
+            right: -50px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 140, 200, 0.06), transparent 70%);
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px -20px rgba(0, 20, 40, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 40px 60px -15px rgba(46, 38, 128, 0.25);
+        }
+        
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .name-badge h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1d267d, #5c3cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .badge-available {
+            background: linear-gradient(145deg, #1b4a3d, #11644e);
+            color: white;
+            padding: 0.6rem 1.6rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            box-shadow: 0 6px 14px rgba(0, 100, 80, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        
+        .badge-available i {
+            font-size: 1.1rem;
+        }
+        
+        .typewriter-row {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            margin: 2rem 0 2.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+        
+        .typewriter {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #191654;
+        }
+        
+        .typewriter span {
+            color: #5f2bff;
+            font-weight: 600;
+            border-right: 3px solid #5f2bff;
+            padding-right: 8px;
+            animation: blink 0.8s infinite;
+        }
+        
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+        
+        .grid-main {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 2rem;
+            margin-top: 1.2rem;
+        }
+        
+        @media (max-width: 900px) {
+            .grid-main {
+                grid-template-columns: 1fr;
+            }
+            .name-badge h1 {
+                font-size: 2.7rem;
+            }
+        }
+        
+        .profile-card,
+        .skills-card,
+        .freelance-card {
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .avatar-icon {
+            background: linear-gradient(45deg, #2a2f7c, #6b4eff);
+            width: 75px;
+            height: 75px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.3rem;
+            box-shadow: 0 12px 18px -8px #5240b0;
+        }
+        
+        .quick-contact p {
+            margin-bottom: 6px;
+        }
+        
+        .quick-contact i {
+            width: 30px;
+            color: #3a3395;
+        }
+        
+        .contact-links {
+            margin: 1.8rem 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 60px;
+            padding: 0.7rem 1.5rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: 0.2s;
+        }
+        
+        .contact-item i {
+            font-size: 1.3rem;
+            width: 2.4rem;
+            color: #4140a5;
+        }
+        
+        .contact-item a {
+            text-decoration: none;
+            color: #1e1a4b;
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .contact-item:hover {
+            background: white;
+            border-color: #9b8cff;
+            transform: translateX(5px);
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            margin: 0.4rem 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #232161;
+            border: 1px solid #d1ccff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: 0.15s;
+        }
+        
+        .skill-tag i {
+            margin-right: 6px;
+            color: #5f3cff;
+        }
+        
+        .skill-tag:hover {
+            background: #5f3cff;
+            color: white;
+            border-color: #5f3cff;
+        }
+        
+        .skill-tag:hover i {
+            color: white;
+        }
+        
+        .soft-skill-item {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.3rem 1.3rem 0.3rem 1rem;
+            border-radius: 30px;
+            margin: 0.3rem 0.5rem 0.3rem 0;
+            border: 1px solid #dad5ff;
+            font-size: 0.9rem;
+        }
+        
+        .soft-skill-item i {
+            color: #2c98f0;
+            margin-right: 6px;
+        }
+        
+        .freelance-card {
+            background: linear-gradient(120deg, #ffffffc9, #f3efff);
+            border: 2px dashed #a391ff;
+        }
+        
+        .step-badge {
+            background: #1b1b4b;
+            color: white;
+            border-radius: 30px;
+            padding: 0.3rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .showcase-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-item {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem 0.8rem 0.8rem 0.8rem;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid #f0ebff;
+            box-shadow: 0 5px 12px rgba(80, 60, 200, 0.05);
+        }
+        
+        .project-item i {
+            font-size: 2.2rem;
+            color: #4c3cbc;
+            margin-bottom: 8px;
+        }
+        
+        .project-item span {
+            display: block;
+            font-weight: 600;
+            color: #23205a;
+            background: #f3f1ff;
+            border-radius: 40px;
+            padding: 0.3rem 0.5rem;
+            font-size: 0.85rem;
+            text-transform: capitalize;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-6px);
+            background: #faf8ff;
+            border-color: #a28eff;
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 4rem;
+            color: #4c4799;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 600px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .typewriter {
+                font-size: 1.3rem;
+            }
+            .badge-available {
+                font-size: 0.85rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="name-badge">
+                <h1>Aqib Abid</h1>
+            </div>
+            <div class="badge-available">
+                <i class="fas fa-briefcase"></i> Open to freelance / job
+            </div>
+        </div>
+
+        <div class="typewriter-row">
+            <div class="typewriter">
+                <span id="typing"></span>
+            </div>
+        </div>
+
+        <div class="grid-main">
+            <div class="left-col">
+                <div class="glass-card profile-card">
+                    <div class="profile-header">
+                        <div class="avatar-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="quick-contact">
+                            <p><i class="fas fa-map-pin"></i> Senior Frontend Developer (basic → intermediate)</p>
+                            <p><i class="fas fa-globe"></i> HTML5 · CSS3 · JS · React (basic)</p>
+                        </div>
+                    </div>
+                    <div class="contact-links">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/923032259907" target="_blank">0303 2259907</a>
+                            <span class="step-badge">direct</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="far fa-envelope"></i>
+                            <a href="mailto:aqibh0392@gmail.com">aqibh0392@gmail.com</a>
+                            <span class="step-badge">24h</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 12px; font-size: 0.95rem; background: rgba(255,255,255,0.5); padding: 0.8rem; border-radius: 1.5rem;">
+                        <i class="fas fa-check-circle" style="color: #2b9a5e;"></i>
+                        <strong>Step 1: job apply / freelance clients</strong> · <strong>Step 2: aqib abid · senior frontend developer</strong>
+                    </div>
+                </div>
+
+                <div class="glass-card skills-card">
+                    <h3 style="font-weight: 600; margin-bottom: 1.5rem; color: #202020;"><i class="fas fa-microchip me-2" style="color:#5b3df5;"></i> Technical toolkit</h3>
+                    <div>
+                        <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6)</span>
+                        <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                        <span class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                        <span class="skill-tag"><i class="fab fa-react"></i> React (basic)</span>
+                        <span class="skill-tag"><i class="fas fa-layout"></i> Website Layout</span>
+                        <span class="skill-tag"><i class="fas fa-tree"></i> DOM Manipulation</span>
+                        <span class="skill-tag"><i class="fas fa-globe"></i> Cross‑Browser</span>
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                        <span class="skill-tag"><i class="fas fa-tools"></i> Browser DevTools</span>
+                    </div>
+                    <hr style="margin: 1.8rem 0 1.2rem; opacity: 0.2;">
+                    <h4 style="font-size: 1.2rem; font-weight: 600;"> <i class="far fa-smile" style="color:#ff7b00;"></i> Soft skills</h4>
+                    <div style="margin-top: 0.8rem;">
+                        <span class="soft-skill-item"><i class="fas fa-puzzle-piece"></i> Problem Solving</span>
+                        <span class="soft-skill-item"><i class="fas fa-eye"></i> Attention to Detail</span>
+                        <span class="soft-skill-item"><i class="fas fa-rocket"></i> Quick Learner</span>
+                        <span class="soft-skill-item"><i class="fas fa-hourglass-half"></i> Time Management</span>
+                        <span class="soft-skill-item"><i class="fas fa-comments"></i> Communication</span>
+                        <span class="soft-skill-item"><i class="fas fa-people-group"></i> Team Collaboration</span>
+                        <span class="soft-skill-item"><i class="fas fa-bolt"></i> Self-Motivated</span>
+                        <span class="soft-skill-item"><i class="fas fa-sync-alt"></i> Adaptability</span>
+                    </div>
+                </div>
+
+                <div class="freelance-card" style="padding: 1.8rem;">
+                    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                        <i class="fas fa-hand-holding-heart" style="font-size: 2.5rem; color: #3a3395;"></i>
+                        <div>
+                            <h4 style="font-weight: 600;">Freelance / full‑time</h4>
+                            <p style="margin-bottom: 0;">Available for interesting work. Let’s connect!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="showcase-card">
+                    <h3 style="font-weight: 600; margin-bottom: 0.8rem;"><i class="fas fa-cubes me-2" style="color:#7b4dff;"></i> creative playground</h3>
+                    <p style="color:#252259; margin-bottom: 1.2rem;">UI concepts & mini projects (design only)</p>
+                    <div class="project-grid">
+                        <div class="project-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>responsive dashboard</span>
+                        </div>
+                        <div class="project-item">
+                            <i class="fas fa-mobile-button"></i>
+                            <span>mobile first layout</span>
+                        </div>
+                        <div class="project-item">
+                            <i class="fas fa-cloud-sun"></i>
+                            <span>weather widget</span>
+                        </div>
+                        <div class="project-item">
+                            <i class="fas fa-cart-shopping"></i>
+                            <span>product card</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem;"><i class="fas fa-code"></i> built with HTML5, CSS3, JS, bootstrap, react (basic)</p>
+                </div>
+
+                <div class="glass-card" style="padding: 2rem;">
+                    <h4 style="font-weight: 600;"><i class="fas fa-quote-right me-2" style="color:#9239f0;"></i> about me</h4>
+                    <p style="margin: 1rem 0 1.5rem;">I’m a frontend developer with an eye for detail and a drive to build clean, responsive experiences. I combine technical skills (HTML5, CSS3, JavaScript, Bootstrap, basic React) with soft skills like adaptability and teamwork.</p>
+                    <div style="background: rgba(255,255,255,0.6); border-radius: 2rem; padding: 1rem;">
+                        <i class="fas fa-tasks" style="color:#322d82;"></i> <strong>core tools:</strong> VS Code, Git, Figma, Chrome DevTools
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                        <span class="step-badge" style="background: #2f2a72;"><i class="far fa-clock"></i> quick learner</span>
+                        <span class="step-badge" style="background: #2d6b5b;"><i class="fas fa-check"></i> attention to detail</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                    <span style="background: white; border-radius: 60px; padding: 0.6rem 2rem; border: 1px solid #b3a5ff;"><i class="fab fa-whatsapp text-success me-2"></i> 0303 2259907  ·  aqibh0392@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>© 2025 Aqib Abid — built with creativity, HTML, CSS, and a little JavaScript magic ✨</p>
+        </div>
+    </div>
+
+    <script>
+        const words = ["Senior Frontend Developer", "HTML5 + CSS3 + JS", "React (basic)", "Freelancer", "Creative coder"];
+        let i = 0;
+        let j = 0;
+        let currentWord = "";
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing");
+
+        function typeEffect() {
+            if (i < words.length) {
+                if (!isDeleting && j <= words[i].length) {
+                    currentWord = words[i].substring(0, j);
+                    typingElement.textContent = currentWord;
+                    j++;
+                    setTimeout(typeEffect, 100);
+                } else if (isDeleting && j >= 0) {
+                    currentWord = words[i].substring(0, j);
+                    typingElement.textContent = currentWord;
+                    j--;
+                    setTimeout(typeEffect, 60);
+                } else {
+                    if (!isDeleting) {
+                        isDeleting = true;
+                        setTimeout(typeEffect, 1000);
+                    } else {
+                        isDeleting = false;
+                        i = (i + 1) % words.length;
+                        j = 0;
+                        setTimeout(typeEffect, 200);
+                    }
+                }
+            }
+        }
+        window.onload = typeEffect;
+    </script>
+
+</body>
+
+</html>
